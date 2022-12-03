@@ -3,7 +3,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
+        System.out.println("\n---------------------------------------------");
+        System.out.println("Welcome to BAU  System");
+        System.out.println("---------------------------------------------");
         System.out.println("How Many Products Have Been Ordered");
         int pnumber = sc.nextInt();
         AContainer AC = new AContainer();
@@ -16,7 +18,7 @@ public class Main {
                 "► Email \n" +
                 "► Product Name \n" +
                 "► Product Type");
-        for (int i=1; i <= pnumber ; i++){
+        for (int i = 1; i <= pnumber; i++) {
             String fname = sc.next();
             String lname = sc.next();
             int phonenumber = sc.nextInt();
@@ -24,15 +26,19 @@ public class Main {
             Receiver R = new Receiver(fname, lname, phonenumber, email);
             String pname = sc.next();
             String ptype = sc.next();
-            Product P = new Product(pname,ptype,i,R );
-            for (int j=1 ; j<=cnumber; j++){
-                AContainer ac = new AContainer(j);
-                for (int g=1 ; g <= csize; g++){
+            Product P = new Product(pname, ptype, i, R);
+            AContainer ac = null;
+            for (int j = 1; j <= cnumber; j++) {
+                ac = new AContainer(j);
+                for (int g = 1; g <= csize; g++) {
                     ac.Push(P);
+                    ac.display();
                 }
             }
+            Port Po = new Port();
+            Po.enqueue(ac);
+            Po.Display();
 
         }
-
     }
 }
